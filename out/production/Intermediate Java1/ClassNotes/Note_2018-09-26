@@ -1,0 +1,16 @@
+/*
+Building music notation system, there are two kinds of error:
+1. recognition error: computer mis-recognizing the human drawn signs due to bad drawing of the strok
+2. context error: computer mis-interpreting e.g. stem bar versus chapter bar
+              the solution is to build reactions to both staff bar and notations, and let them bid on how likely each scenario could be
+3. building classifier to recognize words based on points
+    cluster analysis -- restrict the recognition down to small clusters so that even when two different shapes of "a"s are drawn, they are not read as one object
+    principal component analysis -- the location or size of the drawing doesn't matter to the recognition, based on the statistical analysis (in a 38 dimensional space)determining the most important component of the cluster of points
+4. QnD for pattern recognition -- "Nearest Neighbor Matching": let each point find distance to every other point, and once they find the closest point that represents a letter, they settle with that letter
+5. feature analysis (noise reduction) - fix "where", "how big", "sample size"
+    fix "where"(translation) -- take the bounding box of every drawing, then do a relative calculation to translate the actual shape
+    fix "how big"(scale) -- down sizing, use size from above step and times 1000, bring it to standard size
+    fix "sample size"(n sample) -- only pick limited points from the drawing, re-sampling
+ 6. we are heading towards building music notation, but to start we will need to build a shape recognition tool
+
+ */
